@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(./wiki/**)",
+      "Edit(./manifest/**)",
+      "Bash(python scripts/check_wiki.py)",
+      "Bash(python3 scripts/check_wiki.py)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git switch:*)",
+      "Bash(git checkout -b:*)",
+      "Bash(ls:*)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(gh:*)",
+      "Edit(./AGENTS.md)",
+      "Edit(./CLAUDE.md)",
+      "mcp__github"
+    ],
+    "deny": [
+      "Edit(./raw/**)",
+      "Edit(./.github/**)",
+      "Edit(./scripts/**)",
+      "Edit(./.claude/**)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(rm:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)",
+      "WebFetch"
+    ]
+  }
+}

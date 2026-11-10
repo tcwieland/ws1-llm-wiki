@@ -1,0 +1,23 @@
+# Prüft das Wiki nach jedem Push und in jedem Pull Request.
+# Ein Agent darf Seiten schreiben – aber nur, was diese Prüfung besteht, kommt nach main.
+name: Wiki-Check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  wiki-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # nötig, um Änderungen an raw/ zu erkennen
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Wiki-Regeln prüfen
+        run: python scripts/check_wiki.py

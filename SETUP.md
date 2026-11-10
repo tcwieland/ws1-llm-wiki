@@ -1,0 +1,77 @@
+# Setup für Workshop 1
+
+Bitte **vor dem Workshop** erledigen. Am Workshoptag bekommt ihr die Zugangsdaten; die Installation sollte dann schon laufen.
+
+## 1 Voraussetzungen
+
+- Laptop mit Administrationsrechten (bei Firmengeräten vorher prüfen)
+- **Git** – Test: `git --version`
+  - Windows: [Git for Windows](https://git-scm.com/download/win) installieren (Claude Code braucht die mitgelieferte Git Bash)
+- **Python 3.12** oder neuer – habt ihr seit LE 0. Test: `python --version`
+- **GitHub-Konto** mit aktivierter Zwei-Faktor-Anmeldung
+- Ein Editor, z. B. VS Code (optional, aber hilfreich, um das Wiki anzusehen)
+
+## 2 Claude Code installieren
+
+macOS, Linux, WSL:
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Windows (PowerShell):
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+Test: `claude --version` zeigt eine Versionsnummer. Anmelden müsst ihr euch noch nicht – den API-Zugang bekommt ihr im Workshop.
+
+## 3 Optional: Codex
+
+Wer Codex zusätzlich ausprobieren möchte (eigenes ChatGPT-Konto oder mit dem HS-Dienst):
+
+```bash
+npm install -g @openai/codex     # braucht Node.js 18 oder neuer
+```
+
+Codex liest `AGENTS.md` direkt. Für den HS-Dienst in `~/.codex/config.toml`:
+
+```toml
+model = "MODELLNAME"
+model_provider = "hs"
+
+[model_providers.hs]
+name = "HS Coburg"
+base_url = "https://HOST-DES-DIENSTES/v1"
+env_key = "HS_API_KEY"
+wire_api = "responses"
+```
+
+## 4 Am Workshoptag (gemeinsam)
+
+1. **Repo anlegen:** auf der Repo-Seite *Use this template → Create a new repository*, Sichtbarkeit **privat**. Dann klonen.
+2. **`.env` anlegen:** `.env.example` kopieren, API-Schlüssel und HS-Zugang eintragen. `.env` wird nie committet.
+3. **GitHub-Token:** *Settings → Developer settings → Fine-grained tokens → Generate new token*
+   - Repository access: *Only select repositories* → euer Workshop-Repo
+   - Permissions: Contents, Issues, Pull requests: *Read and write*; Actions: *Read*
+   - Token als `GITHUB_PAT` in `.env` eintragen
+4. **GitHub-MCP-Server anbinden** (im Repo-Ordner):
+
+   ```bash
+   set -a; . ./.env; set +a
+   claude mcp add --transport http github https://api.githubcopilot.com/mcp -H "Authorization: Bearer $GITHUB_PAT"
+   ```
+
+   Windows (PowerShell), Token direkt einsetzen:
+
+   ```powershell
+   claude mcp add --transport http github https://api.githubcopilot.com/mcp -H "Authorization: Bearer <euer Token>"
+   ```
+
+   Test: `claude mcp list` zeigt `github` als verbunden. Die Konfiguration liegt lokal bei euch, nicht im Repo.
+
+## Hilfe
+
+- `claude doctor` prüft die Installation.
+- Im Workshop gilt: Wer hängt, arbeitet zu zweit an einem Rechner weiter. Niemand verpasst etwas.
