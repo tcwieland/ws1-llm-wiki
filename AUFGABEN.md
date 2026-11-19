@@ -20,7 +20,7 @@ Ziel: Ein Agent arbeitet in eurem Repository, spricht über MCP mit GitHub und m
    - [ ] *„Nutze wiki-tools und gib mir eine Statistik des Wikis.“* – Fragt der Agent vorher nach? Vergleicht mit `.claude/settings.json`: Warum darf er diese Werkzeuge ohne Rückfrage nutzen, die von GitHub aber nicht?
    - [ ] Zusatz für Schnelle: Ergänzt selbst ein eigenes Werkzeug, z. B. `seiten_ohne_quelle()` (der Agent darf `scripts/` nicht ändern – probiert es ruhig aus), startet Claude Code neu und testet es.
 4. **Pipeline: rot, dann grün**
-   - [ ] Im Repo unter *Actions* prüfen, ob der Workflow *Wiki-Check* aktiv ist.
+   - [ ] Auf GitHub im Browser ins Repo gehen, dort unter *Actions* prüfen, ob der Workflow *Wiki-Check* aktiv ist.
    - [ ] *„Lege auf einem neuen Branch `test-ci` die Seite `wiki/test.md` mit einem Satz und ohne Kopfzeile an, committe, pushe und öffne einen Pull Request.“*
    - [ ] Die Pipeline schlägt fehl. *„Lies über GitHub das Ergebnis des Wiki-Checks in meinem Pull Request und behebe die Fehler.“*
    - [ ] Pipeline grün? Pull Request schließen, ohne zu mergen.
