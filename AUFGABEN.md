@@ -2,25 +2,30 @@
 
 ## Aufgabe 1
 
-**Teil A · Repo, Agent, MCP und Pipeline · 50 Minuten · zu zweit**
+**Teil A · Repo, Agent, MCP und Pipeline · 65 Minuten · zu zweit**
 
-Ziel: Ein Agent arbeitet in eurem Repository, spricht über MCP mit GitHub, und eine Pipeline prüft, was er tut.
+Ziel: Ein Agent arbeitet in eurem Repository, spricht über MCP mit GitHub und mit einem eigenen Server, und eine Pipeline prüft, was er tut.
 
 1. **Repo und Agent**
-   - [ ] Repo aus dem Template anlegen, klonen, `.env` füllen ([SETUP.md](SETUP.md#4-am-workshoptag-gemeinsam)).
+   - [ ] Repo aus dem Template anlegen, klonen, `.env` füllen ([SETUP.md](SETUP.md#5-am-workshoptag-gemeinsam)).
    - [ ] Claude Code starten: `./scripts/start-claude.sh`
    - [ ] Fragt den Agenten: *„Erkläre mir dieses Repository in fünf Sätzen. Was darfst du, was nicht?“*
    - [ ] Gebt `/permissions` ein und vergleicht mit `.claude/settings.json`. Welche Regel überrascht euch?
 2. **GitHub-MCP-Server**
-   - [ ] Server anbinden ([SETUP.md](SETUP.md#4-am-workshoptag-gemeinsam), Schritt 4), in Claude Code mit `/mcp` prüfen.
+   - [ ] Server anbinden ([SETUP.md](SETUP.md#5-am-workshoptag-gemeinsam), Schritt 4), in Claude Code mit `/mcp` prüfen.
    - [ ] *„Lege in meinem Repository ein Issue ‚Wiki aufbauen‘ mit drei Aufgaben als Checkliste an.“* – Beobachtet die Rückfrage, bevor der Agent schreibt.
-3. **Pipeline: rot, dann grün**
+3. **Eigener MCP-Server `wiki-tools`**
+   - [ ] Öffnet `scripts/wiki_mcp.py` und lest den Code: Jede Funktion mit `@mcp.tool()` wird ein Werkzeug. Der Docstring ist die Beschreibung, die der Agent sieht.
+   - [ ] Server anbinden ([SETUP.md](SETUP.md#5-am-workshoptag-gemeinsam), Schritt 5) und Claude Code neu starten. Mit `/mcp` prüfen: Welche vier Werkzeuge bietet er an?
+   - [ ] *„Nutze wiki-tools und gib mir eine Statistik des Wikis.“* – Fragt der Agent vorher nach? Vergleicht mit `.claude/settings.json`: Warum darf er diese Werkzeuge ohne Rückfrage nutzen, die von GitHub aber nicht?
+   - [ ] Zusatz für Schnelle: Ergänzt selbst ein eigenes Werkzeug, z. B. `seiten_ohne_quelle()` (der Agent darf `scripts/` nicht ändern – probiert es ruhig aus), startet Claude Code neu und testet es.
+4. **Pipeline: rot, dann grün**
    - [ ] Im Repo unter *Actions* prüfen, ob der Workflow *Wiki-Check* aktiv ist.
    - [ ] *„Lege auf einem neuen Branch `test-ci` die Seite `wiki/test.md` mit einem Satz und ohne Kopfzeile an, committe, pushe und öffne einen Pull Request.“*
    - [ ] Die Pipeline schlägt fehl. *„Lies über GitHub das Ergebnis des Wiki-Checks in meinem Pull Request und behebe die Fehler.“*
    - [ ] Pipeline grün? Pull Request schließen, ohne zu mergen.
 
-**Ergebnis:** Issue angelegt, ein roter und ein grüner Pipeline-Lauf.
+**Ergebnis:** Issue angelegt, eigener MCP-Server läuft, ein roter und ein grüner Pipeline-Lauf.
 **Zum Nachdenken:** Wer hat den Fehler gefunden – der Agent, die Pipeline oder ihr?
 
 ---

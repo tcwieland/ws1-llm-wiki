@@ -27,7 +27,17 @@ irm https://claude.ai/install.ps1 | iex
 
 Test: `claude --version` zeigt eine Versionsnummer. Anmelden müsst ihr euch noch nicht – den API-Zugang bekommt ihr im Workshop.
 
-## 3 Optional: Codex
+## 3 MCP-SDK für Python
+
+Für den eigenen MCP-Server im Workshop (im selben Python, in dem ihr auch sonst arbeitet, z. B. eurer venv aus LE 0):
+
+```bash
+pip install "mcp[cli]"
+```
+
+Test: `python -c "import mcp; print('ok')"` (macOS ggf. `python3`).
+
+## 4 Optional: Codex
 
 Wer Codex zusätzlich ausprobieren möchte (eigenes ChatGPT-Konto oder mit dem HS-Dienst):
 
@@ -48,7 +58,7 @@ env_key = "HS_API_KEY"
 wire_api = "responses"
 ```
 
-## 4 Am Workshoptag (gemeinsam)
+## 5 Am Workshoptag (gemeinsam)
 
 1. **Repo anlegen:** auf der Repo-Seite *Use this template → Create a new repository*, Sichtbarkeit **privat**. Dann klonen.
 2. **`.env` anlegen:** `.env.example` kopieren, API-Schlüssel und HS-Zugang eintragen. `.env` wird nie committet.
@@ -70,6 +80,20 @@ wire_api = "responses"
    ```
 
    Test: `claude mcp list` zeigt `github` als verbunden. Die Konfiguration liegt lokal bei euch, nicht im Repo.
+
+5. **Eigenen MCP-Server `wiki-tools` anbinden** (im Repo-Ordner):
+
+   ```bash
+   claude mcp add wiki-tools -- python "$(pwd)/scripts/wiki_mcp.py"
+   ```
+
+   Windows (PowerShell):
+
+   ```powershell
+   claude mcp add wiki-tools -- python "$PWD\scripts\wiki_mcp.py"
+   ```
+
+   Nehmt das Python, in dem `mcp` installiert ist (macOS ggf. `python3`, venv: vollständiger Pfad zum Python der venv). Test: `claude mcp list` zeigt `wiki-tools` als verbunden.
 
 ## Hilfe
 

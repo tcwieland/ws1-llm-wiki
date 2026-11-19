@@ -7,7 +7,7 @@ In diesem Repository baut ihr im Laufe des Tages ein **LLM-Wiki**: Ein Agent lie
 
 | Teil | Was ihr hier macht | Datei |
 |---|---|---|
-| A | Repo, Agent, GitHub-MCP-Server und Pipeline einrichten | [AUFGABEN.md](AUFGABEN.md#aufgabe-1) |
+| A | Repo, Agent, zwei MCP-Server (GitHub und ein eigener) und Pipeline einrichten | [AUFGABEN.md](AUFGABEN.md#aufgabe-1) |
 | B | Das Wiki vom Agenten bauen lassen – mit Cloud-Modell und mit dem Dienst der Hochschule | [AUFGABEN.md](AUFGABEN.md#aufgabe-2) |
 | C | Human-in-the-Loop-Leitlinien (Arbeitsblatt) | – |
 | D | Agent-Manifest – für das Team und als Konfiguration | [manifest/AGENT-MANIFEST.md](manifest/AGENT-MANIFEST.md) |
@@ -21,7 +21,7 @@ AGENTS.md            Schema und Regeln für den Agenten (Codex liest diese Datei
 CLAUDE.md            bindet AGENTS.md für Claude Code ein
 .claude/             Befehle /ingest, /query, /lint und die Rechte des Agenten
 .github/workflows/   Pipeline: prüft das Wiki nach jedem Push
-scripts/             Prüfskript und Startskripte (Anthropic-API oder HS-Dienst)
+scripts/             Prüfskript, eigener MCP-Server wiki_mcp.py, Startskripte
 manifest/            Vorlage für euer Agent-Manifest (Teil D)
 ```
 
