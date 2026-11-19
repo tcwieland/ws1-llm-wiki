@@ -32,10 +32,12 @@ Test: `claude --version` zeigt eine Versionsnummer. Anmelden müsst ihr euch noc
 Für den eigenen MCP-Server im Workshop (im selben Python, in dem ihr auch sonst arbeitet, z. B. eurer venv aus LE 0):
 
 ```bash
-pip install "mcp[cli]"
+pip install "mcp[cli]<2"
 ```
 
-Test: `python -c "import mcp; print('ok')"` (macOS ggf. `python3`).
+Wichtig: Version **unter 2**. `scripts/wiki_mcp.py` nutzt `FastMCP` aus dem SDK 1.x; in mcp 2.x wurde das umbenannt, und der Server startet dann nicht (`CONNECTION_CLOSED`).
+
+Test: `python -c "from mcp.server.fastmcp import FastMCP; print('ok')"` (macOS ggf. `python3`).
 
 ## 4 Optional: Codex
 
