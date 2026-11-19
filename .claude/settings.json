@@ -12,7 +12,12 @@
       "Bash(git commit:*)",
       "Bash(git switch:*)",
       "Bash(git checkout -b:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "mcp__wiki-tools",
+      "Bash(python -m unittest:*)",
+      "Bash(python3 -m unittest:*)",
+      "Bash(python tools/wiki_graph.py:*)",
+      "Bash(python3 tools/wiki_graph.py:*)"
     ],
     "ask": [
       "Bash(git push:*)",
